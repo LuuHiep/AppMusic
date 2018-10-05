@@ -58,14 +58,16 @@ public class FragmentSong extends Fragment {
         Cursor songCursor = contentResolver.query(songUri, null, null, null, null);
         {
             if (songCursor != null && songCursor.moveToFirst()) {
+                int songId = songCursor.getColumnIndex(MediaStore.Audio.Media._ID);
                 int songTitle = songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE);
                 int songArtist = songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST);
                 int songData = songCursor.getColumnIndex(MediaStore.Audio.Media.DATA);
                 do {
+                    int currenId = songCursor.getInt(songId);
                     String currentTitle = songCursor.getString(songTitle);
                     String currentArtist = songCursor.getString(songArtist);
                     String data = songCursor.getString(songData);
-                    arrayListSong.add(new Song("",currentTitle, currentArtist,R.drawable.icon_beats));
+                    arrayListSong.add(new Song(currenId,currentTitle, currentArtist,R.drawable.icon_beats));
                     Log.d("data", data);
                 } while (songCursor.moveToNext());
             }

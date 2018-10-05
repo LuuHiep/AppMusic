@@ -1,29 +1,29 @@
 package model;
 
 public class Song {
-    private String id;
+    private int id;
     private String songName;
     private String songArtistName;
     private int imageSong;
 
-    public Song(String id, String songName, String songArtistName) {
+    public Song(int id, String songName, String songArtistName) {
         this.id = id;
         this.songName = songName;
         this.songArtistName = songArtistName;
     }
 
-    public Song(String id, String songName, String songArtistName, int imageSong) {
+    public Song(int id, String songName, String songArtistName, int imageSong) {
         this.id = id;
         this.songName = songName;
         this.songArtistName = songArtistName;
         this.imageSong = imageSong;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

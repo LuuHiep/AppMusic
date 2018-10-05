@@ -17,4 +17,5 @@
 
     <color name="toolbar_play">#000</color>
     <color name="backgroud_toolbar">#3F51B5</color>
+    <color name="toolbar_transparent">#33000000</color>
 </resources>

@@ -1,8 +1,13 @@
 package activity;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -14,8 +19,19 @@ import android.view.MenuItem;
 
 import com.example.lau.appmusic.R;
 
+import java.util.ArrayList;
+
+import model.Song;
+import service.MusicService;
+
 public class MainActivity extends AppCompatActivity {
 
+
+    //service
+    private MusicService musicSrv;
+    private Intent playIntent;
+    private boolean musicBound=false;
+    private ArrayList<Song> songList;
     private String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
 
     ViewPager viewPager;
@@ -81,4 +97,42 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
+    //connect to the service
+    private ServiceConnection musicConnection = new ServiceConnection(){
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            MusicService.MusicBinder binder = (MusicService.MusicBinder)service;
+            //get service
+            musicSrv = binder.getService();
+            //pass list
+            musicSrv.setList(songList);
+            musicBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            musicBound = false;
+        }
+    };
+
+    //start and bind the service when the activity starts
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(playIntent==null){
+            playIntent = new Intent(this, MusicService.class);
+            bindService(playIntent, musicConnection, Context.BIND_AUTO_CREATE);
+            startService(playIntent);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(playIntent);
+        unbindService(musicConnection);
+    }
+
 }
