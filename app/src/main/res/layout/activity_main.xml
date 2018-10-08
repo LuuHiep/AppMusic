@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,27 +7,107 @@
     android:orientation="vertical"
     tools:context="activity.MainActivity">
 
+
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:background="@android:color/transparent"
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            app:tabBackground="@color/backgroud_menu_tab"
-            android:layout_height="50dp">
+            <include layout="@layout/toolbar"/>
 
-        </android.support.design.widget.TabLayout>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:background="@android:color/transparent"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                app:tabBackground="@color/backgroud_menu_tab"
+                android:layout_height="50dp"/>
 
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl"
+        android:layout_below="@id/appBar"/>
 
-</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/pager_background">
+
+        <LinearLayout
+            android:id="@+id/current_playing_bar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:background="?attr/selectableItemBackground">
+            <LinearLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/iv_album_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/icon_album"/>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_song_name_main"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="@string/song_name_play"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:id="@+id/tv_artist_main"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="@string/artist_name_play"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:id="@+id/iv_play_pause_main"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/pause"/>
+                <ImageView
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:id="@+id/iv_next_main"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/skip_next"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -2,5 +2,7 @@
     <string name="app_name">App Music</string>
 
     <string name="change_layout">List_Grid</string>
+    <string name="song_name_play">Song Name</string>
+    <string name="artist_name_play">Artist Name</string>
 
 </resources>

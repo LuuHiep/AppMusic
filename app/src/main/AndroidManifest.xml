@@ -19,10 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="activity.PlayMusicActivity">
-        </activity>
+        <activity android:name="activity.PlayMusicActivity"></activity>
 
-        <service android:name="service.MusicService"/>
+        <service android:name="service.MusicService" />
+
+        <activity android:name="activity.AlbumActivity"></activity>
     </application>
 
 </manifest>

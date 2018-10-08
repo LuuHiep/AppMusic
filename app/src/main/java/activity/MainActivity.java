@@ -9,13 +9,18 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.example.lau.appmusic.R;
 
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     ViewPager viewPager;
     TabLayout tabLayout;
+    ImageView ivIconAlbumMain, ivPlayPauseMain, ivNextMain;
+    TextView tvSongNameMain, tvArtistNameMain;
+    Toolbar tbMain;
+  //  ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
     private void initView(){
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        ivIconAlbumMain = (ImageView) findViewById(R.id.iv_album_main);
+        ivPlayPauseMain = (ImageView) findViewById(R.id.iv_play_pause_main);
+        ivNextMain = (ImageView) findViewById(R.id.iv_next_main);
+        tvSongNameMain = (TextView) findViewById(R.id.tv_song_name_main);
+        tvArtistNameMain = (TextView) findViewById(R.id.tv_artist_main);
+        tbMain = (Toolbar) findViewById(R.id.tb_main);
+
+        setSupportActionBar(tbMain);
 
         showTab();
     }
