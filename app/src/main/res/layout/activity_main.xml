@@ -5,17 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context="activity.MainActivity">
 
-
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_detail"
+        android:background="@color/toolbar_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_above="@id/appBar">
+    </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
-
-            <include layout="@layout/toolbar"/>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/tab_layout"
@@ -33,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/rl"
         android:layout_below="@id/appBar"/>
-
 
     <RelativeLayout
         android:id="@+id/rl"

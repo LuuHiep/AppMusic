@@ -64,6 +64,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.viewHolder> 
     public int getItemCount() {
         return albumArrayList.size();
     }
+
     public class viewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageAlbum;

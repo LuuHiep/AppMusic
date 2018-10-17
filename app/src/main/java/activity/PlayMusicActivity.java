@@ -42,6 +42,7 @@ public class PlayMusicActivity extends AppCompatActivity {
     private ObjectAnimator animator;
     private int position = 0;
     private ArrayList<Song> songList;
+
     //service
     public MusicService musicSrv;
     private Intent playIntent;

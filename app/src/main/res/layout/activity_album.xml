@@ -6,9 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
+    android:fitsSystemWindows="true"
     tools:context="activity.AlbumActivity">
 
-
-    <include layout="@layout/toolbar"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_album"
+        android:background="@color/toolbar_transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        >
+    </android.support.v7.widget.Toolbar>
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ImageView ivIconAlbumMain, ivPlayPauseMain, ivNextMain;
     TextView tvSongNameMain, tvArtistNameMain;
-    Toolbar tbMain;
+
   //  ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
         ivNextMain = (ImageView) findViewById(R.id.iv_next_main);
         tvSongNameMain = (TextView) findViewById(R.id.tv_song_name_main);
         tvArtistNameMain = (TextView) findViewById(R.id.tv_artist_main);
-        tbMain = (Toolbar) findViewById(R.id.tb_main);
-
-        setSupportActionBar(tbMain);
 
         showTab();
     }
